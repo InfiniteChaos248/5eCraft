@@ -1,0 +1,67 @@
+[
+	{
+		"name": "Artificer",
+		"slug": "artificer",
+		"has_spells": true
+	},
+	{
+		"name": "Barbarian",
+		"slug": "barbarian",
+		"has_spells": false
+	},
+	{
+		"name": "Bard",
+		"slug": "bard",
+		"has_spells": true
+	},
+	{
+		"name": "Cleric",
+		"slug": "cleric",
+		"has_spells": true
+	},
+	{
+		"name": "Druid",
+		"slug": "druid",
+		"has_spells": true
+	},
+	{
+		"name": "Fighter",
+		"slug": "fighter",
+		"has_spells": false
+	},
+	{
+		"name": "Monk",
+		"slug": "monk",
+		"has_spells": false
+	},
+	{
+		"name": "Plaldin",
+		"slug": "paladin",
+		"has_spells": true
+	},
+	{
+		"name": "Ranger",
+		"slug": "ranger",
+		"has_spells": true
+	},
+	{
+		"name": "Rogue",
+		"slug": "rogue",
+		"has_spells": false
+	},
+	{
+		"name": "Sorcerer",
+		"slug": "sorcerer",
+		"has_spells": true
+	},
+	{
+		"name": "Warlock",
+		"slug": "warlock",
+		"has_spells": true
+	},
+	{
+		"name": "Wizard",
+		"slug": "wizard",
+		"has_spells": true
+	}
+]
