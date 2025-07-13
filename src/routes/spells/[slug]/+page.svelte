@@ -1,12 +1,14 @@
 <script>
-	import SpellCard from '$lib/components/SpellCard.svelte';
+	import SpellCard from '$lib/components/spells/SpellCard.svelte';
+	import NotFound from '$lib/components/NotFound.svelte';
 
 	const { data } = $props();
 	const spell = data.spell;
+	const slug = data.slug;
 </script>
 
 {#if spell}
 	<SpellCard {spell} />
 {:else}
-	<p>Spell not found.</p>
+	<NotFound name={slug} content="Spell" />
 {/if}

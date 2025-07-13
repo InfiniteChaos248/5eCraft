@@ -4,6 +4,7 @@
 		level_filter = $bindable(),
 		school_filter = $bindable(),
 		name_filter = $bindable(),
+		openSpells = $bindable(),
 		spellcasters
 	} = $props();
 </script>
@@ -52,6 +53,7 @@
 			level_filter = '';
 			school_filter = '';
 			name_filter = '';
+			openSpells = [];
 		}}>clear</button
 	>
 </div>
@@ -61,45 +63,50 @@
 		display: flex;
 		flex-wrap: wrap;
 		gap: 0.75rem;
-		background-color: #fdf8e4;
-		border: 2px solid #d7ccc8;
+		background-color: #1f2937; /* Dark background */
+		border: 2px solid #374151; /* Border with contrast */
 		padding: 1rem;
 		border-radius: 10px;
 		margin-bottom: 1.5rem;
-		font-family: 'Georgia', serif;
-		box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+		font-family: 'Segoe UI', sans-serif;
+		box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
 		width: fit-content;
 	}
 
 	.filter-info {
 		padding: 0.5rem 0.75rem;
 		font-size: 0.95rem;
-		color: #4e342e;
+		color: #d1d5db; /* Light gray text */
 		font-family: inherit;
 	}
 
 	.filter-input,
 	.filter-select {
 		padding: 0.5rem 0.75rem;
-		border: 1px solid #c8b69f;
+		border: 1px solid #4b5563;
 		border-radius: 6px;
 		font-size: 0.95rem;
-		background-color: #fffdf7;
-		color: #4e342e;
+		background-color: #111827;
+		color: #f3f4f6;
 		font-family: inherit;
 		min-width: 180px;
+	}
+
+	.filter-input::placeholder {
+		color: #f3f4f6;
+		opacity: 0.5;
 	}
 
 	.filter-input:focus,
 	.filter-select:focus {
 		outline: none;
-		border-color: #a1887f;
-		box-shadow: 0 0 0 2px #efebe9;
+		border-color: #818cf8;
+		box-shadow: 0 0 0 2px #6366f1;
 	}
 
 	.clear-button {
-		background-color: #d7ccc8;
-		color: #4e342e;
+		background-color: #374151;
+		color: #e5e7eb;
 		font-weight: 600;
 		border: none;
 		padding: 0.5rem 1rem;
@@ -110,6 +117,6 @@
 	}
 
 	.clear-button:hover {
-		background-color: #c7b29b;
+		background-color: #4b5563;
 	}
 </style>

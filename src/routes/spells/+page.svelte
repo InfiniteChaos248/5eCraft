@@ -1,8 +1,8 @@
 <script>
 	import { getAllSpells, getSpellcastingClassNames } from '$lib/utils/dataUtils';
-	import SpellPreview from '$lib/components/SpellPreview.svelte';
-	import SpellCard from '$lib/components/SpellCard.svelte';
-	import FilterBar from '$lib/components/FilterBar.svelte';
+	import SpellPreview from '$lib/components/spells/SpellPreview.svelte';
+	import SpellCard from '$lib/components/spells/SpellCard.svelte';
+	import SpellsFilter from '$lib/components/spells/SpellsFilter.svelte';
 
 	import { slide } from 'svelte/transition';
 
@@ -49,11 +49,12 @@
 <div class="spells-wrapper">
 	<h1 class="title-spells">Spells</h1>
 
-	<FilterBar
+	<SpellsFilter
 		bind:class_filter
 		bind:level_filter
 		bind:school_filter
 		bind:name_filter
+		bind:openSpells
 		{spellcasters}
 	/>
 

@@ -1,1 +1,64 @@
+dev next:
+href slug along with filter
+multi select in filter
+
 opc@129.159.19.177
+
+sudo su
+
+https://docs.railway.com/guides/sveltekit
+https://www.cyberciti.biz/faq/linux-add-a-swap-file-howto/
+
+sudo yum update
+sudo yum install -y git
+sudo yum install -y tmux
+
+curl -fsSL https://rpm.nodesource.com/setup_22.x | sudo bash -
+sudo yum install -y nsolid
+
+
+
+
+https://svelte.dev/docs/kit/introduction
+https://getemoji.com/#symbols
+
+
+
+
+https://en.wikipedia.org/wiki/List_of_Dungeons_%26_Dragons_rulebooks
+https://2cradle2grave.substack.com/p/5e-phb-spell-summaries
+
+
+
+
+Spell Tome
+spell compare
+link/tooltip
+
+build your own DM screen
+
+
+global search
+
+
+spells
+feats
+items
+classes and class features
+backgrounds
+lineages (races)
+rules
+DM screen
+beastiary
+adventures
+
+
+
+
+character creation - fully random, assisted, fully manual
+character sheets - notes, live inventory mangement
+
+DM tools:
+campaign - characters, initiative tracker, source books/manuals -> NPC, items
+
+reference site
