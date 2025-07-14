@@ -14,7 +14,7 @@
 	<select class="filter-select" bind:value={class_filter}>
 		<option value="">-- class --</option>
 		{#each spellcasters as cls}
-			<option value={cls}>{cls}</option>
+			<option value={cls.toLowerCase()}>{cls}</option>
 		{/each}
 	</select>
 
@@ -34,14 +34,14 @@
 
 	<select class="filter-select" bind:value={school_filter}>
 		<option value="">-- school of magic --</option>
-		<option value="Abjuration">Abjuration</option>
-		<option value="Conjuration">Conjuration</option>
-		<option value="Divination">Divination</option>
-		<option value="Enchantment">Enchantment</option>
-		<option value="Evocation">Evocation</option>
-		<option value="Illusion">Illusion</option>
-		<option value="Necromancy">Necromancy</option>
-		<option value="Transmutation">Transmutation</option>
+		<option value="abjuration">Abjuration</option>
+		<option value="conjuration">Conjuration</option>
+		<option value="divination">Divination</option>
+		<option value="enchantment">Enchantment</option>
+		<option value="evocation">Evocation</option>
+		<option value="illusion">Illusion</option>
+		<option value="necromancy">Necromancy</option>
+		<option value="transmutation">Transmutation</option>
 	</select>
 
 	<input class="filter-input" type="text" placeholder="spell name .." bind:value={name_filter} />
@@ -118,5 +118,33 @@
 
 	.clear-button:hover {
 		background-color: #4b5563;
+	}
+
+	@media (max-width: 600px) {
+		.spell-filters {
+			flex-direction: column;
+			align-items: stretch;
+			gap: 0.5rem;
+			font-size: 0.85rem;
+			width: 100%;
+			max-width: 100%;
+			box-sizing: border-box;
+			padding: 0.75rem;
+		}
+
+		.filter-input,
+		.filter-select {
+			font-size: 0.85rem;
+		}
+
+		.clear-button {
+			width: 100%;
+			font-size: 0.9rem;
+			padding: 0.5rem;
+		}
+
+		.filter-info {
+			font-size: 0.85rem;
+		}
 	}
 </style>

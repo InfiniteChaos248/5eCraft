@@ -99,12 +99,7 @@
 		background-color: #fff8dc; /* Light parchment */
 		color: #3e2723; /* Dark brown */
 		border: 1px solid #a1887f;
-		border-radius: 0.5rem;
 		font-size: 0.95rem;
-	}
-
-	:global(.feat-description thead) {
-		background-color: #f5e5b8;
 	}
 
 	:global(.feat-description tbody) {
@@ -158,5 +153,53 @@
 	.icon-button:hover {
 		background: #ffe0b2;
 		transform: scale(1.05);
+	}
+
+	@media (max-width: 600px) {
+		.feat-card {
+			padding: 1rem;
+			font-size: 0.9rem;
+		}
+
+		.feat-header h2 {
+			font-size: 1.3rem;
+		}
+
+		.feat-meta {
+			font-size: 0.9rem;
+		}
+
+		.feat-description {
+			font-size: 0.9rem;
+			line-height: 1.5;
+		}
+
+		:global(.feat-description ul li) {
+			font-size: 0.9rem;
+		}
+
+		:global(.feat-description .table-wrapper) {
+			overflow-x: auto;
+			width: 100%;
+		}
+
+		:global(.feat-description table) {
+			width: 100%;
+			min-width: 100%;
+			table-layout: auto;
+			font-size: 0.9rem;
+		}
+
+		:global(.feat-description th),
+		:global(.feat-description td) {
+			padding: 0.5rem 0.75rem;
+			white-space: nowrap;
+		}
+
+		.icon-button {
+			width: 28px;
+			height: 28px;
+			font-size: 0.9rem;
+		}
 	}
 </style>

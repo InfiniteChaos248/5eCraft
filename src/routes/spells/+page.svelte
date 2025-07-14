@@ -4,26 +4,38 @@
 	import SpellCard from '$lib/components/spells/SpellCard.svelte';
 	import SpellsFilter from '$lib/components/spells/SpellsFilter.svelte';
 
+	import { page } from '$app/state';
+
+	let class_param = page.url.searchParams.get('class');
+	let level_param = page.url.searchParams.get('level');
+	let school_param = page.url.searchParams.get('school');
+
 	import { slide } from 'svelte/transition';
 
 	const spellcasters = getSpellcastingClassNames();
 
 	let spells = $state(getAllSpells());
-	let class_filter = $state('');
-	let level_filter = $state('');
-	let school_filter = $state('');
+	let class_filter = $state(class_param ? class_param.toLowerCase() : '');
+	let level_filter = $state(
+		level_param ? (level_param.toLowerCase() === 'cantrip' ? '0' : level_param) : ''
+	);
+	let school_filter = $state(school_param ? school_param.toLowerCase() : '');
 	let name_filter = $state('');
 
 	let filtered = $derived.by(() => {
 		let filtering = spells;
 		if (class_filter) {
-			filtering = filtering.filter((spell) => spell.classes.includes(class_filter));
+			filtering = filtering.filter((spell) =>
+				spell.classes.toLowerCase().includes(class_filter.toLowerCase())
+			);
 		}
 		if (level_filter) {
 			filtering = filtering.filter((spell) => spell.level === level_filter);
 		}
 		if (school_filter) {
-			filtering = filtering.filter((spell) => spell.school === school_filter);
+			filtering = filtering.filter(
+				(spell) => spell.school.toLowerCase() === school_filter.toLowerCase()
+			);
 		}
 		if (name_filter) {
 			filtering = filtering.filter((spell) =>

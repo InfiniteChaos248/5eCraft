@@ -137,4 +137,42 @@
 		color: #e5e7eb;
 		font-size: 1rem;
 	}
+
+	@media (max-width: 600px) {
+		.feat-filters {
+			flex-direction: column;
+			align-items: stretch;
+			gap: 0.5rem;
+			font-size: 0.85rem;
+			width: 100%;
+			max-width: 100%;
+			box-sizing: border-box;
+			padding: 0.75rem;
+		}
+
+		.filter-input,
+		.filter-select {
+			width: 100%;
+			min-width: 0;
+			font-size: 0.85rem;
+			box-sizing: border-box;
+		}
+
+		.clear-button {
+			width: 100%;
+			font-size: 0.9rem;
+			padding: 0.5rem;
+			box-sizing: border-box;
+		}
+
+		.filter-info {
+			font-size: 0.85rem;
+			width: 100%;
+		}
+
+		.checkbox-container {
+			flex-wrap: wrap;
+			width: 100%;
+		}
+	}
 </style>

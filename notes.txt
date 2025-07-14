@@ -1,7 +1,3 @@
-dev next:
-href slug along with filter
-multi select in filter
-
 opc@129.159.19.177
 
 sudo su
@@ -31,18 +27,14 @@ https://2cradle2grave.substack.com/p/5e-phb-spell-summaries
 
 
 
-Spell Tome
-spell compare
-link/tooltip
+references -> spells, feats
+would be nice to have -> multi-select(?), heart and add to tome, compare 2 refs, link/tooltip to other rules
 
-build your own DM screen
-
+build your own DM screen/player reference
 
 global search
 
-
-spells
-feats
+pending:
 items
 classes and class features
 backgrounds
@@ -52,13 +44,38 @@ DM screen
 beastiary
 adventures
 
-
-
-
-character creation - fully random, assisted, fully manual
-character sheets - notes, live inventory mangement
+character creation engine - fully random, assisted, fully manual
+character sheet - fully interactive,notes, inventory mangement
 
 DM tools:
-campaign - characters, initiative tracker, source books/manuals -> NPC, items
+campaign - characters, initiative tracker, source books/manuals -> NPC, items, monsters, custom stat block/spell/item
 
-reference site
+
+cd /usr/5ecraft/5eCraft/
+git pull
+npm install
+npm run build
+npm run start
+
+
+// firewall
+firewall-cmd --reload
+firewall-cmd --zone=public --list-services
+firewall-cmd --permanent --zone=public --add-service=https
+firewall-cmd --permanent --zone=public --add-service=http
+firewall-cmd --list-ports
+firewall-cmd --permanent --add-port=3000/tcp
+
+
+
+// kill process
+netstat -tunlp
+kill -9 <pid>
+
+// tmux
+tmux list-session
+tmux new-session -s 5ecraft -d
+tmux attach-session -t 5ecraft
+
+detatch => ctrl + B, d
+kill => ctrl + B, :kill-session
