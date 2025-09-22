@@ -1,0 +1,160 @@
+[
+	{
+		"slug": "sierra-indigo",
+		"name": "Sierra Indigo",
+		"pilot": "Tesla",
+		"stats": {
+			"size": 4,
+			"speed": 4,
+			"strength": 4,
+			"weapons_tech": 2,
+			"special_tech": 4,
+			"style_integrity": 6
+		},
+		"info": {
+			"size": "24 ft.",
+			"hp": 1000,
+			"inv": 1
+		},
+		"automation_functions": [
+			{
+				"name": "Auto Flight",
+				"description": "Controls basic flight mechanisms such as obstacle avoidance, path setting & hover mode",
+				"active": true
+			},
+			{
+				"name": "Core Enforcer",
+				"description": "+2 to Style / Integrity",
+				"active": true,
+				"stat_booster": {
+					"stat": "style_integrity",
+					"value": 2
+				}
+			},
+			{
+				"name": "Speed Booster",
+				"description": "+2 to Speed",
+				"active": true,
+				"stat_booster": {
+					"stat": "speed",
+					"value": 2
+				}
+			},
+			{
+				"name": "Strength Enforcer",
+				"description": "+2 to Strength",
+				"active": true,
+				"stat_booster": {
+					"stat": "strength",
+					"value": 2
+				}
+			}
+		],
+		"weapons": [
+			{
+				"name": "Railgun",
+				"skill": "Shoulder Arms",
+				"damage": "10d10",
+				"rof": "1",
+				"reload": "1 rd / 3 sec",
+				"mag_capacity": 25,
+				"ammo": 21,
+				"mags": 10
+			},
+			{
+				"name": "Slug",
+				"skill": "Shoulder Arms",
+				"damage": "10d10",
+				"rof": "1",
+				"reload": "1 rd / 3 sec",
+				"mag_capacity": 4,
+				"ammo": 1,
+				"mags": 10
+			}
+		],
+		"special_tech": [
+			{
+				"name": "Electroplating",
+				"type": "Battle Accessory",
+				"function": "Causes an electrostatic discharge from bullets and body. Opponent must do a SPL.TECH DV roll"
+			},
+			{
+				"name": "Flight Boosters",
+				"type": "Utility",
+				"function": "Permits flight"
+			},
+			{
+				"name": "Spectrophotometer",
+				"type": "Utility",
+				"function": "Allows viewing in visible, UV and IR spectrum, thermal imaging"
+			},
+			{
+				"name": "Retractable Chain & Hook",
+				"type": "Utility",
+				"function": "60m long retractable chain ending in a hook"
+			}
+		],
+		"battery": {
+			"core_type": "Nuclear",
+			"chg_units": [
+				{
+					"id": 1,
+					"status": "active",
+					"percentage": 40
+				},
+				{
+					"id": 2,
+					"status": "ready",
+					"percentage": 100
+				},
+				{
+					"id": 3,
+					"status": "ready",
+					"percentage": 100
+				},
+				{
+					"id": 4,
+					"status": "ready",
+					"percentage": 100
+				},
+				{
+					"id": 5,
+					"status": "ready",
+					"percentage": 100
+				},
+				{
+					"id": 6,
+					"status": "ready",
+					"percentage": 100
+				},
+				{
+					"id": 7,
+					"status": "ready",
+					"percentage": 100
+				},
+				{
+					"id": 8,
+					"status": "empty",
+					"percentage": 0
+				},
+				{
+					"id": 9,
+					"status": "empty",
+					"percentage": 0
+				},
+				{
+					"id": 10,
+					"status": "destroyed",
+					"percentage": 0
+				}
+			],
+			"charge_units": 10,
+			"active": 1,
+			"ready": 5,
+			"destroyed": 1,
+			"empty": 3,
+			"percentage": 40
+		},
+		"integrity": {}
+	}
+]

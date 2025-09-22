@@ -65,6 +65,7 @@ firewall-cmd --permanent --zone=public --add-service=https
 firewall-cmd --permanent --zone=public --add-service=http
 firewall-cmd --list-ports
 firewall-cmd --permanent --add-port=3000/tcp
+sudo firewall-cmd --remove-port=3000/tcp --permanent
 
 
 
@@ -79,3 +80,27 @@ tmux attach-session -t 5ecraft
 
 detatch => ctrl + B, d
 kill => ctrl + B, :kill-session
+
+
+// nginx
+systemctl start nginx
+systemctl status nginx
+systemctl enable nginx
+nginx -t
+systemctl reload nginx
+setsebool -P httpd_can_network_connect 1
+
+// certbot
+/usr/local/bin/certbot --nginx
+/usr/local/bin/certbot renew --dry-run
+
+
+
+dd if=/dev/zero of=/swapfile1 bs=1024 count=8388608
+chown root:root /swapfile1
+chmod 0600 /swapfile1
+mkswap /swapfile1
+swapon /swapfile1
+vi /etc/fstab
+/swapfile1 none swap sw 0 0
+free -m

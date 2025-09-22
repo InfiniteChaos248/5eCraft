@@ -1,6 +1,24 @@
 <script>
 	let mobileMenuOpen = false;
-	let referencesOpen = false;
+
+	let menusOpen = { ref: false, other: false };
+
+	const menus = [
+		{
+			label: 'References ▾',
+			id: 'ref',
+			links: [
+				{ href: '/spells', label: 'Spells' },
+				{ href: '/feats', label: 'Feats' },
+				{ href: '/items', label: 'Items' }
+			]
+		},
+		{
+			label: 'Other TTRPGs ▾',
+			id: 'other',
+			links: [{ href: '/mech-punk', label: 'MechPunk' }]
+		}
+	];
 
 	const referencesLinks = [
 		{ href: '/spells', label: 'Spells' },
@@ -12,13 +30,13 @@
 		mobileMenuOpen = !mobileMenuOpen;
 	}
 
-	function toggleReferences() {
-		referencesOpen = !referencesOpen;
+	function toggleMenu(id) {
+		menusOpen[id] = !menusOpen[id];
 	}
 
 	function closeAll() {
 		mobileMenuOpen = false;
-		referencesOpen = false;
+		menusOpen = { ref: false, other: false };
 	}
 </script>
 
@@ -28,26 +46,30 @@
 	<button class="menu-toggle" onclick={toggleMobileMenu}> ☰ </button>
 
 	<div class="nav-links {mobileMenuOpen ? 'open' : ''}">
-		<div class="dropdown {referencesOpen ? 'open' : ''}">
-			<span
-				class="nav-link dropdown-toggle"
-				role="button"
-				tabindex="0"
-				onkeydown={(event) => {
-					if (event.key === 'Enter') {
-						toggleReferences();
-					}
-				}}
-				onclick={toggleReferences}
-			>
-				References ▾
-			</span>
-			<div class="dropdown-menu">
-				{#each referencesLinks as link}
-					<a href={link.href} onclick={closeAll}>{link.label}</a>
-				{/each}
+		{#each menus as menu}
+			<div class="dropdown {menusOpen[menu.id] ? 'open' : ''}">
+				<span
+					class="nav-link dropdown-toggle"
+					role="button"
+					tabindex="0"
+					onkeydown={(event) => {
+						if (event.key === 'Enter') {
+							toggleMenu(menu.id);
+						}
+					}}
+					onclick={() => {
+						toggleMenu(menu.id);
+					}}
+				>
+					{menu.label}
+				</span>
+				<div class="dropdown-menu">
+					{#each menu.links as link}
+						<a href={link.href} onclick={closeAll}>{link.label}</a>
+					{/each}
+				</div>
 			</div>
-		</div>
+		{/each}
 	</div>
 </nav>
 

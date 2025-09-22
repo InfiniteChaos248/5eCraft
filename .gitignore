@@ -9,6 +9,8 @@ node_modules
 /build
 /protected
 
+/data
+
 # OS
 .DS_Store
 Thumbs.db
