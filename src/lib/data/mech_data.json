@@ -22,5 +22,24 @@
 		"4": "2 tons",
 		"5": "4 tons",
 		"6": "20 tons"
+	},
+	"battery": {
+		"core_types": {
+			"electric": { "activeMinutes": 60 },
+			"nuclear": { "activeMinutes": 180 }
+		},
+		"modes": {
+			"passive": {
+				"multiplier": 4
+			},
+			"active": {
+				"multiplier": 1
+			},
+			"combat": {
+				"multiplier": 0.1
+			}
+		},
+		"booster_consumption_perc": 20,
+		"rounding_decimals": 3
 	}
 }

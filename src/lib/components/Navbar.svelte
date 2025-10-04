@@ -41,7 +41,7 @@
 </script>
 
 <nav class="navbar">
-	<a class="navbar-brand" href="/" onclick={closeAll}>5eCraft</a>
+	<a class="navbar-brand" href="/" onclick={closeAll}>5eSanctum</a>
 
 	<button class="menu-toggle" onclick={toggleMobileMenu}> ☰ </button>
 

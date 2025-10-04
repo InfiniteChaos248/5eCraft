@@ -8,6 +8,28 @@
 	import WeaponsTech from '$lib/components/mech/WeaponsTech.svelte';
 	import { getAllMechs, getmechData } from '$lib/utils/dataUtils';
 
+	let code = $state(null);
+	let mechList = $state([]);
+	let mechName = $state('');
+	let loadingMech = $state(false);
+	let error = $state('');
+
+	async function fetchMechList() {
+		if (!code) return;
+		error = '';
+		try {
+			const res = await fetch(`/api/mech-punk/list?code=${encodeURIComponent(code)}`);
+			if (!res.ok) throw new Error('Failed to fetch mech list');
+			mechList = await res.json();
+			if (!mechList.length) {
+				alert('Invalid Access Code');
+				code = '';
+			}
+		} catch (err) {
+			alert('Error :: ' + err.message);
+		}
+	}
+
 	let mechs = $state(getAllMechs());
 	let mechData = $state(getmechData());
 	let selectedMech = $state(mechs[0]);
@@ -35,13 +57,30 @@
 </script>
 
 <div class="mechpunk-wrapper">
-	<label for="mech-select">Choose your Mech:</label>
-	<select id="mech-select" bind:value={selectedMech}>
-		<option value="" disabled selected>Select a mech</option>
-		{#each mechs as mech}
-			<option value={mech}>{mech.name}</option>
-		{/each}
-	</select>
+	<div class="mech-access">
+		{#if !mechList.length}
+			<input class="code-input" type="text" bind:value={code} placeholder="Access code" />
+			<button class="code-button" onclick={fetchMechList} disabled={!code}> Submit </button>
+		{/if}
+
+		{#if mechList.length}
+			<div class="mech-select">
+				<select class="mech-dropdown" bind:value={mechName}>
+					<option value="" disabled selected>Select Mech</option>
+					{#each mechList as mech}
+						<option value={mech}>{mech}</option>
+					{/each}
+				</select>
+				<button onclick={fetchMechData} disabled={loadingMech || !mechName}>
+					{loadingMech ? 'Loading...' : 'Go!'}
+				</button>
+			</div>
+		{/if}
+
+		{#if error}
+			<p class="error">{error}</p>
+		{/if}
+	</div>
 
 	{#if mech}
 		<div class="mech-container">
@@ -58,7 +97,7 @@
 
 				<SpecialTech {mech} />
 
-				<Battery bind:mech />
+				<Battery bind:mech {mechData} />
 				<div>Mech Integrity</div>
 			</div>
 		</div>
@@ -74,6 +113,38 @@
 		padding: 2rem;
 		font-family: 'Orbitron', sans-serif;
 		color: #e0faff;
+	}
+
+	.mech-access {
+		max-width: 400px;
+		margin: 2rem auto;
+		display: flex;
+		flex-direction: row;
+		gap: 0.8rem;
+		font-family: 'Orbitron', sans-serif;
+		color: black;
+	}
+
+	.code-input,
+	.code-button,
+	.mech-dropdown {
+		padding: 0.5rem 0.8rem;
+		border-radius: 6px;
+		border: 2px solid #00f5ff;
+		background: #111;
+		color: #e0faff;
+		font-family: 'Orbitron', sans-serif;
+	}
+
+	button:disabled {
+		display: none;
+	}
+
+	.mech-select {
+		margin-top: 1rem;
+		display: flex;
+		flex-direction: column;
+		gap: 0.5rem;
 	}
 
 	.mech-container {

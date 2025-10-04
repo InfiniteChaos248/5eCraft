@@ -1,5 +1,5 @@
 <script>
-	import CustomNumber from './CustomNumber.svelte';
+	import CustomNumber from './NumberControl1.svelte';
 
 	let { mech = $bindable() } = $props();
 	let weaponsAccOpen = $state(false);
