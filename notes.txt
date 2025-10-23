@@ -113,12 +113,9 @@ free -m
 
 CREATE TABLE IF NOT EXISTS mechs (id INTEGER PRIMARY KEY AUTOINCREMENT, name TEXT NOT NULL, code TEXT NOT NULL, data_blob TEXT NOT NULL, created_at DATETIME DEFAULT CURRENT_TIMESTAMP, updated_at DATETIME DEFAULT CURRENT_TIMESTAMP)
 
-battery buttons
+
 tooltip with rules and info
 mech rules and restrictions
 weapon DV
 weapon types
 recharge time and mode
-flight
-nuclear swap DV
-apply swap when discharging > 100%

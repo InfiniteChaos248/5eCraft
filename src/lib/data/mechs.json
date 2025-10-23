@@ -72,6 +72,7 @@
 				"mags": 10
 			}
 		],
+		"flight": true,
 		"special_tech": [
 			{
 				"name": "Electroplating",
@@ -100,7 +101,7 @@
 				{
 					"id": 1,
 					"status": "active",
-					"percentage": 40
+					"percentage": 100
 				},
 				{
 					"id": 2,
@@ -134,18 +135,18 @@
 				},
 				{
 					"id": 8,
-					"status": "empty",
-					"percentage": 0
+					"status": "ready",
+					"percentage": 100
 				},
 				{
 					"id": 9,
-					"status": "empty",
-					"percentage": 0
+					"status": "ready",
+					"percentage": 100
 				},
 				{
 					"id": 10,
-					"status": "destroyed",
-					"percentage": 0
+					"status": "ready",
+					"percentage": 100
 				}
 			],
 			"charge_units": 10,

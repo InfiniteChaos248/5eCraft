@@ -9,6 +9,7 @@
 	const BATTERY_RULES = mechData.battery;
 	const BATTERY_CORE_TYPE = mech.battery.core_type.toLowerCase();
 	const ACTIVE_MINUTES = mechData.battery.core_types[BATTERY_CORE_TYPE].activeMinutes;
+	const FLIGHT_MINUTES = mechData.battery.flightMinutes;
 	const modes = Object.keys(BATTERY_RULES.modes);
 
 	// ----- STATE -----
@@ -96,9 +97,27 @@
 
 	// logic - iterate all the 'active' and 'ready' charge units to discharge
 	function discharge_battery() {
+		let cores_swap_counter = 0;
 		['active', 'ready'].forEach((status) => {
-			mech.battery.chg_units.filter((chg) => chg.status === status).forEach(discharge_charge_unit);
+			mech.battery.chg_units
+				.filter((chg) => chg.status === status)
+				.forEach((chg) => {
+					discharge_charge_unit(chg);
+					if (chg.status === 'empty' && charge_perc >= 0) {
+						cores_swap_counter++;
+					}
+				});
 		});
+		if (charge_perc > 0) cores_swap_counter--;
+		if (cores_swap_counter > 0) {
+			alert('cycled through ' + cores_swap_counter + ' cores while discharging');
+			// swap to the next available charge unit
+			let next_ready_core = mech.battery.chg_units.find((chg) => chg.status === 'ready');
+			if (next_ready_core) {
+				selected_core = next_ready_core.id;
+				swap_charge_unit();
+			}
+		}
 	}
 
 	// logic - for given charge unit, check and increase charge% and change status, if required
@@ -139,6 +158,19 @@
 		}
 
 		set_charge_status(target, 'active');
+		if (BATTERY_CORE_TYPE === 'nuclear') {
+			// swapping nuclear cores is risky -- roll d20 - (6 - INTEGRITY)
+			let roll_modifier = 6 - mech.stats.style_integrity;
+			alert(
+				'roll d20' +
+					(roll_modifier === 0
+						? ''
+						: roll_modifier > 0
+							? ' - ' + roll_modifier
+							: ' + ' + Math.abs(roll_modifier)) +
+					' to check for malfunction'
+			);
+		}
 
 		selected_core = -1;
 	}
@@ -163,6 +195,9 @@
 
 	// logic - compute time to use up one charge unit based on core type and active stat boosters
 	function effectiveMinutes(current_mode) {
+		if (current_mode === 'flight') {
+			return FLIGHT_MINUTES;
+		}
 		const mode = BATTERY_RULES.modes[current_mode];
 		let base = ACTIVE_MINUTES * mode.multiplier;
 		base = base * (1 - (boosters * BATTERY_RULES.booster_consumption_perc) / 100);
@@ -261,8 +296,8 @@
 			express_counter={100}
 		/>
 		<button class="battery-btn recharge" onclick={recharge_battery}>Recharge</button>
-		<button class="battery-btn recharge" onclick={applyChargePercForDischarge}>Apply</button>
-		<button class="battery-btn repair" onclick={swap_charge_unit}>Swap</button>
+		<button class="battery-btn apply" onclick={applyChargePercForDischarge}>Apply</button>
+		<button class="battery-btn swap" onclick={swap_charge_unit}>Swap</button>
 		<button class="battery-btn destroy" onclick={destroy_charge_unit}>Destroy</button>
 		<button class="battery-btn repair" onclick={repair_charge_unit}>Repair</button>
 	</div>
@@ -290,6 +325,27 @@
 				{mode.toUpperCase()}
 			</div>
 		{/each}
+		{#if mech.flight}
+			<div
+				class="tab {selected_mode === 'flight' ? selected_mode : 'inactive'}"
+				role="button"
+				tabindex="0"
+				onkeydown={(event) => {
+					if (event.key === 'Enter') {
+						selected_mode = 'flight';
+						minutes = 0;
+						rounds = 0;
+					}
+				}}
+				onclick={() => {
+					selected_mode = 'flight';
+					minutes = 0;
+					rounds = 0;
+				}}
+			>
+				FLIGHT
+			</div>
+		{/if}
 	</div>
 
 	<div class="panel {selected_mode}">
@@ -405,66 +461,71 @@
 	}
 
 	.battery-btn {
-		padding: 0.6rem 1.2rem;
-		font-size: 1rem;
-		font-weight: bold;
-		border: 2px solid transparent;
-		border-radius: 8px;
-		cursor: pointer;
-		transition: all 0.25s ease-in-out;
+		border-radius: 0.5rem;
+		padding: 0.5rem 1rem;
 		background: rgba(255, 255, 255, 0.08);
 		color: #fff;
+		cursor: pointer;
 		text-transform: uppercase;
+		font-size: 0.85rem;
+		font-weight: bold;
 		letter-spacing: 1px;
-		box-shadow: 0 0 6px rgba(0, 0, 0, 0.6);
-	}
-
-	.battery-btn:hover {
-		box-shadow: 0 0 10px rgba(255, 255, 255, 0.4);
-	}
-
-	.battery-btn:active {
-		transform: scale(0.95);
-	}
-
-	.destroy {
-		border-color: #ff0080;
-		color: #ff0080;
-	}
-
-	.destroy:hover {
-		background: rgba(255, 0, 128, 0.15);
-		box-shadow: 0 0 10px #ff0080;
-	}
-
-	.recharge {
-		border-color: #fffb00;
-		color: #fffb00;
-	}
-
-	.recharge:hover {
-		background: rgba(255, 251, 0, 0.15);
-		box-shadow: 0 0 10px #fffb00;
-	}
-
-	.repair {
-		border-color: #fffb00;
-		color: #fffb00;
-	}
-
-	.repair:hover {
-		background: rgba(255, 251, 0, 0.15);
-		box-shadow: 0 0 10px #fffb00;
+		transition: 0.2s ease;
 	}
 
 	.discharge {
-		border-color: #00f5ff;
-		color: #00f5ff;
+		background: rgba(0, 229, 255, 0.1);
+		border: 2px solid #00e5ff;
+	}
+	.discharge:hover {
+		box-shadow: 0 0 8px #00e5ff;
+		background: rgba(0, 229, 255, 0.2);
 	}
 
-	.discharge:hover {
-		background: rgba(0, 245, 255, 0.15);
-		box-shadow: 0 0 10px #00f5ff;
+	.recharge {
+		background: rgba(255, 204, 0, 0.1);
+		border: 2px solid #ffcc00;
+	}
+	.recharge:hover {
+		box-shadow: 0 0 8px #ffcc00;
+		background: rgba(255, 204, 0, 0.2);
+	}
+
+	.swap {
+		background: rgba(255, 224, 102, 0.1);
+		border: 2px solid #ffe066;
+	}
+	.swap:hover {
+		box-shadow: 0 0 8px #ffe066;
+		background: rgba(255, 224, 102, 0.2);
+	}
+
+	.apply {
+		background: rgba(255, 255, 255, 0.08);
+		border: 2px solid #e0e0e0;
+		color: #f5f5f5;
+	}
+	.apply:hover {
+		box-shadow: 0 0 8px #ffffff;
+		background: rgba(255, 255, 255, 0.15);
+	}
+
+	.destroy {
+		background: rgba(255, 0, 76, 0.1);
+		border: 2px solid #ff004c;
+	}
+	.destroy:hover {
+		box-shadow: 0 0 8px #ff004c;
+		background: rgba(255, 0, 76, 0.2);
+	}
+
+	.repair {
+		background: rgba(57, 255, 20, 0.1);
+		border: 2px solid #39ff14;
+	}
+	.repair:hover {
+		box-shadow: 0 0 8px #39ff14;
+		background: rgba(57, 255, 20, 0.2);
 	}
 
 	.tabs {
@@ -494,6 +555,10 @@
 		color: #ff0080;
 		border-color: #ff0080;
 	}
+	.tab.flight {
+		color: blue;
+		border-color: blue;
+	}
 
 	.tab.inactive {
 		color: #fff;
@@ -520,6 +585,11 @@
 	.panel.combat {
 		border-color: #ff0080;
 		box-shadow: 0 0 8px #ff0080 inset;
+	}
+
+	.panel.flight {
+		border-color: blue;
+		box-shadow: 0 0 8px blue inset;
 	}
 
 	.panel-content {

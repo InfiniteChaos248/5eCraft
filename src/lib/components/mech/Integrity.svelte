@@ -194,7 +194,7 @@
 
 	.action-btn {
 		border-radius: 0.5rem;
-		padding: 0.2rem 0.5rem;
+		padding: 0.3rem 0.75rem;
 		background: rgba(25, 25, 35, 0.9);
 		box-shadow: 0 0 6px rgba(0, 0, 0, 0.6);
 		color: #fff;
@@ -203,24 +203,27 @@
 		font-size: 0.85rem;
 		font-weight: bold;
 		letter-spacing: 1px;
+		transition: all 0.2s ease;
 	}
 
 	.action-btn.damage {
-		background: rgba(255, 50, 50, 0.2);
-		border: 2px solid var(--accent, #ff4d4d);
+		background: rgba(255, 0, 76, 0.15);
+		border: 2px solid #ff004c;
+	}
+	.action-btn.damage:hover {
+		box-shadow: 0 0 8px #ff004c;
+		background: rgba(255, 0, 76, 0.25);
+		filter: drop-shadow(0 0 4px #ff004c);
 	}
 
 	.action-btn.repair {
-		background: rgba(50, 255, 50, 0.2);
-		border: 2px solid var(--accent, #39ff14);
+		background: rgba(57, 255, 20, 0.15);
+		border: 2px solid #39ff14;
 	}
-
-	.action-btn.damage:hover {
-		box-shadow: 0 0 6px #ff4d4d;
-	}
-
 	.action-btn.repair:hover {
-		box-shadow: 0 0 6px #39ff14;
+		box-shadow: 0 0 8px #39ff14;
+		background: rgba(57, 255, 20, 0.25);
+		filter: drop-shadow(0 0 4px #39ff14);
 	}
 
 	.parts-label {

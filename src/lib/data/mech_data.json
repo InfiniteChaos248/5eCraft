@@ -39,6 +39,7 @@
 				"multiplier": 0.1
 			}
 		},
+		"flightMinutes": 5,
 		"booster_consumption_perc": 20,
 		"rounding_decimals": 3
 	},
