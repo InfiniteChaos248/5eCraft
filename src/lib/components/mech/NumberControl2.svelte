@@ -108,4 +108,35 @@
 		-moz-appearance: textfield;
 		appearance: textfield;
 	}
+
+	/* ----- RESPONSIVE STYLES ----- */
+	@media (max-width: 768px) {
+		.number-control {
+			gap: 0.2rem;
+		}
+
+		.number-input {
+			width: 64px;
+			font-size: 0.85rem;
+			padding: 0.3rem;
+		}
+	}
+
+	@media (max-width: 300px) {
+		.number-control {
+			gap: 0.15rem;
+		}
+
+		.small-btn {
+			width: 22px;
+			height: 22px;
+			font-size: 0.7rem;
+		}
+
+		.number-input {
+			width: 56px;
+			font-size: 0.8rem;
+			padding: 0.25rem;
+		}
+	}
 </style>

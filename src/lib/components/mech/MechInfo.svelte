@@ -5,7 +5,7 @@
 </script>
 
 <div class="mech-info">
-	<h2 class="mech-info-title">Info</h2>
+	<h2 class="mech-info-title">INFO</h2>
 	<div class="mech-info-grid">
 		<div class="info-card">
 			<span class="info-label">Lift Capacity</span>
@@ -40,17 +40,16 @@
 
 <style>
 	.mech-info {
-		margin: 0.5rem 0;
+		margin-top: 0.5rem;
 		padding: 1rem;
-		background: #1a1a1a;
-		border: 2px solid #333;
+		border: 2px solid #00f5ff;
 		border-radius: 12px;
-		box-shadow: 0 0 10px rgba(0, 255, 204, 0.1);
+		background: #111;
 	}
 
 	.mech-info-title {
 		font-family: 'Orbitron', sans-serif;
-		font-size: 1.5rem;
+		font-size: 1.2rem;
 		color: #00ffcc;
 		margin: 0;
 		margin-bottom: 1rem;

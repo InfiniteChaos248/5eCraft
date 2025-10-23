@@ -36,6 +36,7 @@
 		border: 2px solid #00f5ff;
 		border-radius: 12px;
 		background: #111;
+		margin-top: 0.5rem;
 	}
 
 	@media (max-width: 600px) {

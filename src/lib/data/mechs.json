@@ -155,6 +155,227 @@
 			"empty": 3,
 			"percentage": 40
 		},
-		"integrity": {}
+		"integrity": {
+			"head": {
+				"id": "head",
+				"label": "Head",
+				"type": "head",
+				"disconnected": false,
+				"max_integrity": 2,
+				"current_integrity": 2,
+				"components": ["Spectrophotometer"]
+			},
+			"torso": {
+				"id": "torso",
+				"label": "Torso",
+				"type": "torso",
+				"max_integrity": 2,
+				"current_integrity": 2,
+				"components": ["Core", "Pilot Pod", "Flight Boosters", "Electroplating"]
+			},
+			"right_arm": {
+				"id": "right_arm",
+				"label": "Right Arm",
+				"type": "limb",
+				"disconnected": false,
+				"max_integrity": 1,
+				"current_integrity": 1,
+				"components": ["Railgun", "Slug"]
+			},
+			"right_forearm": {
+				"id": "right_forearm",
+				"label": "Right Forearm",
+				"type": "limb",
+				"disconnected": false,
+				"max_integrity": 1,
+				"current_integrity": 1,
+				"components": ["Railgun", "Slug"]
+			},
+			"right_hand": {
+				"id": "right_hand",
+				"label": "Right Hand",
+				"type": "limb",
+				"disconnected": false,
+				"max_integrity": 1,
+				"current_integrity": 1
+			},
+			"left_arm": {
+				"id": "left_arm",
+				"label": "Left Arm",
+				"type": "limb",
+				"disconnected": false,
+				"max_integrity": 1,
+				"current_integrity": 1
+			},
+			"left_forearm": {
+				"id": "left_forearm",
+				"label": "Left Forearm",
+				"type": "limb",
+				"disconnected": false,
+				"max_integrity": 1,
+				"current_integrity": 1,
+				"components": ["Retractable Chain & Hook"]
+			},
+			"left_hand": {
+				"id": "left_hand",
+				"label": "Left Hand",
+				"type": "limb",
+				"disconnected": false,
+				"max_integrity": 1,
+				"current_integrity": 1
+			},
+			"right_thigh": {
+				"id": "right_thigh",
+				"label": "Right Thigh",
+				"type": "limb",
+				"disconnected": false,
+				"max_integrity": 1,
+				"current_integrity": 1
+			},
+			"right_leg": {
+				"id": "right_leg",
+				"label": "Right Leg",
+				"type": "limb",
+				"disconnected": false,
+				"max_integrity": 1,
+				"current_integrity": 1
+			},
+			"right_foot": {
+				"id": "right_foot",
+				"label": "Right Foot",
+				"type": "limb",
+				"disconnected": false,
+				"max_integrity": 1,
+				"current_integrity": 1
+			},
+			"left_thigh": {
+				"id": "left_thigh",
+				"label": "Left Thigh",
+				"type": "limb",
+				"disconnected": false,
+				"max_integrity": 1,
+				"current_integrity": 1
+			},
+			"left_leg": {
+				"id": "left_leg",
+				"label": "Left Leg",
+				"type": "limb",
+				"disconnected": false,
+				"max_integrity": 1,
+				"current_integrity": 1
+			},
+			"left_foot": {
+				"id": "left_foot",
+				"label": "Left Foot",
+				"type": "limb",
+				"disconnected": false,
+				"max_integrity": 1,
+				"current_integrity": 1
+			},
+			"neck": {
+				"id": "neck",
+				"label": "Neck",
+				"type": "joint",
+				"max_integrity": 1,
+				"current_integrity": 1,
+				"disconnects": ["head"]
+			},
+			"right_shoulder": {
+				"id": "right_shoulder",
+				"label": "Right Shoulder",
+				"type": "joint",
+				"max_integrity": 1,
+				"current_integrity": 1,
+				"disconnects": ["right_arm", "right_elbow", "right_forearm", "right_wrist", "right_hand"]
+			},
+			"left_shoulder": {
+				"id": "left_shoulder",
+				"label": "Left Shoulder",
+				"type": "joint",
+				"max_integrity": 1,
+				"current_integrity": 1,
+				"disconnects": ["left_arm", "left_elbow", "left_forearm", "left_wrist", "left_hand"]
+			},
+			"right_elbow": {
+				"id": "right_elbow",
+				"label": "Right Elbow",
+				"type": "joint",
+				"max_integrity": 1,
+				"current_integrity": 1,
+				"disconnects": ["right_forearm", "right_wrist", "right_hand"]
+			},
+			"left_elbow": {
+				"id": "left_elbow",
+				"label": "Left Elbow",
+				"type": "joint",
+				"max_integrity": 1,
+				"current_integrity": 1,
+				"disconnects": ["left_forearm", "left_wrist", "left_hand"]
+			},
+			"right_wrist": {
+				"id": "right_wrist",
+				"label": "Right Wrist",
+				"type": "joint",
+				"max_integrity": 1,
+				"current_integrity": 1,
+				"disconnects": ["right_hand"]
+			},
+			"left_wrist": {
+				"id": "left_wrist",
+				"label": "Left Wrist",
+				"type": "joint",
+				"max_integrity": 1,
+				"current_integrity": 1,
+				"disconnects": ["left_hand"]
+			},
+			"right_hip": {
+				"id": "right_hip",
+				"label": "Right Hip",
+				"type": "joint",
+				"max_integrity": 1,
+				"current_integrity": 1,
+				"disconnects": ["right_thigh", "right_knee", "right_leg", "right_ankle", "right_foot"]
+			},
+			"left_hip": {
+				"id": "left_hip",
+				"label": "Left Hip",
+				"type": "joint",
+				"max_integrity": 1,
+				"current_integrity": 1,
+				"disconnects": ["left_thigh", "left_knee", "left_leg", "left_ankle", "left_foot"]
+			},
+			"right_knee": {
+				"id": "right_knee",
+				"label": "Right Knee",
+				"type": "joint",
+				"max_integrity": 1,
+				"current_integrity": 1,
+				"disconnects": ["right_leg", "right_ankle", "right_foot"]
+			},
+			"left_knee": {
+				"id": "left_knee",
+				"label": "Left Knee",
+				"type": "joint",
+				"max_integrity": 1,
+				"current_integrity": 1,
+				"disconnects": ["left_leg", "left_ankle", "left_foot"]
+			},
+			"right_ankle": {
+				"id": "right_ankle",
+				"label": "Right Ankle",
+				"type": "joint",
+				"max_integrity": 1,
+				"current_integrity": 1,
+				"disconnects": ["right_foot"]
+			},
+			"left_ankle": {
+				"id": "left_ankle",
+				"label": "Left Ankle",
+				"type": "joint",
+				"max_integrity": 1,
+				"current_integrity": 1,
+				"disconnects": ["left_foot"]
+			}
+		}
 	}
 ]

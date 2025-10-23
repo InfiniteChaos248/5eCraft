@@ -1,6 +1,7 @@
 <script>
 	import AutomationFunctions from '$lib/components/mech/AutomationFunctions.svelte';
 	import Battery from '$lib/components/mech/Battery.svelte';
+	import Integrity from '$lib/components/mech/Integrity.svelte';
 	import MechHeader from '$lib/components/mech/MechHeader.svelte';
 	import MechInfo from '$lib/components/mech/MechInfo.svelte';
 	import MechStats from '$lib/components/mech/MechStats.svelte';
@@ -98,7 +99,8 @@
 				<SpecialTech {mech} />
 
 				<Battery bind:mech {mechData} />
-				<div>Mech Integrity</div>
+
+				<Integrity bind:mech {mechData} />
 			</div>
 		</div>
 	{/if}
@@ -113,6 +115,18 @@
 		padding: 2rem;
 		font-family: 'Orbitron', sans-serif;
 		color: #e0faff;
+	}
+
+	@media (max-width: 768px) {
+		.mechpunk-wrapper {
+			padding: 1rem;
+		}
+	}
+
+	@media (max-width: 480px) {
+		.mechpunk-wrapper {
+			padding: 0.2rem;
+		}
 	}
 
 	.mech-access {

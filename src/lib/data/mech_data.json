@@ -41,5 +41,13 @@
 		},
 		"booster_consumption_perc": 20,
 		"rounding_decimals": 3
+	},
+	"integrity": {
+		"multiplier": {
+			"head": 0.2,
+			"torso": 0.2,
+			"limb": 0.1,
+			"joint": 0.1
+		}
 	}
 }

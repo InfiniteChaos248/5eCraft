@@ -3,7 +3,7 @@
 </script>
 
 <div class="section">
-	<h3 class="section-title">Stats</h3>
+	<h3 class="section-title">STATS</h3>
 	<div class="stats-grid">
 		<div class="stat-card">
 			<span class="stat-name">SIZE</span><span class="stat-value">{mech.stats.size}</span>

@@ -214,7 +214,7 @@
 
 <!-- main container -->
 <div class="battery-section">
-	<h3 class="section-title">Battery | {mech.battery.core_type} Core</h3>
+	<h3 class="section-title">BATTERY | {mech.battery.core_type} Core</h3>
 
 	<!-- charge cores -->
 	<div class="core-grid">
@@ -316,15 +316,15 @@
 
 <style>
 	.battery-section {
-		padding: 1.5rem;
+		padding: 1rem;
 		border: 2px solid #00f5ff;
 		border-radius: 12px;
 		background: #111;
-		margin-top: 1.5rem;
+		margin-top: 0.5rem;
 	}
 
 	.section-title {
-		font-size: 1.4rem;
+		font-size: 1.2rem;
 		color: #ff0080;
 		text-shadow: 0 0 6px #ff0080;
 		margin: 0;
@@ -398,8 +398,9 @@
 
 	.battery-actions {
 		display: flex;
-		justify-content: space-between;
-		gap: 1rem;
+		flex-wrap: wrap;
+		justify-content: center;
+		gap: 0.6rem;
 		margin-top: 1rem;
 	}
 
@@ -419,7 +420,6 @@
 	}
 
 	.battery-btn:hover {
-		transform: translateY(-2px) scale(1.05);
 		box-shadow: 0 0 10px rgba(255, 255, 255, 0.4);
 	}
 
@@ -430,7 +430,6 @@
 	.destroy {
 		border-color: #ff0080;
 		color: #ff0080;
-		text-shadow: 0 0 6px #ff0080;
 	}
 
 	.destroy:hover {
@@ -441,7 +440,6 @@
 	.recharge {
 		border-color: #fffb00;
 		color: #fffb00;
-		text-shadow: 0 0 6px #fffb00;
 	}
 
 	.recharge:hover {
@@ -452,7 +450,6 @@
 	.repair {
 		border-color: #fffb00;
 		color: #fffb00;
-		text-shadow: 0 0 6px #fffb00;
 	}
 
 	.repair:hover {
@@ -463,7 +460,6 @@
 	.discharge {
 		border-color: #00f5ff;
 		color: #00f5ff;
-		text-shadow: 0 0 6px #00f5ff;
 	}
 
 	.discharge:hover {
@@ -534,5 +530,88 @@
 
 	.panel-content > * {
 		justify-self: center;
+	}
+
+	@media (max-width: 768px) {
+		.battery-section {
+			padding: 1rem;
+		}
+
+		.section-title {
+			text-align: center;
+			font-size: 1.2rem;
+		}
+
+		.core-grid {
+			justify-content: center;
+			gap: 0.6rem;
+		}
+
+		.core {
+			width: 48px;
+			height: 48px;
+			font-size: 1rem;
+		}
+
+		.battery-actions {
+			flex-wrap: wrap;
+			justify-content: center;
+			gap: 0.6rem;
+		}
+
+		.battery-btn {
+			flex: 1 1 45%;
+			min-width: 130px;
+			padding: 0.5rem 1rem;
+			font-size: 0.9rem;
+		}
+
+		.tabs {
+			flex-wrap: wrap;
+			gap: 0.3rem;
+		}
+
+		.tab {
+			flex: 1 1 30%;
+			padding: 0.5rem;
+			font-size: 0.85rem;
+		}
+
+		/* Stack panel content vertically */
+		.panel {
+			gap: 0.8rem;
+		}
+
+		.panel-content {
+			grid-template-columns: 1fr;
+			gap: 0.6rem;
+		}
+
+		.panel-content > * {
+			justify-self: center;
+			text-align: center;
+		}
+	}
+
+	/* Extra-small screens (phones <480px wide) */
+	@media (max-width: 480px) {
+		.core {
+			width: 40px;
+			height: 40px;
+			font-size: 0.9rem;
+		}
+
+		.battery-btn {
+			flex: 1 1 100%;
+			font-size: 0.85rem;
+		}
+
+		.section-title {
+			font-size: 1.1rem;
+		}
+
+		.tab {
+			flex: 1 1 45%;
+		}
 	}
 </style>
