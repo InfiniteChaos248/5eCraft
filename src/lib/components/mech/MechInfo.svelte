@@ -9,12 +9,12 @@
 	<div class="mech-info-grid">
 		<div class="info-card">
 			<span class="info-label">Lift Capacity</span>
-			<span class="info-value">{mech.info.lift_capacity}</span>
+			<span class="info-value">{mech.derived_info.lift_capacity}</span>
 		</div>
 		<div class="info-card">
-			<span class="info-label">HP (max. <strong>{mech.info.max_hp}</strong>)</span>
+			<span class="info-label">HP (max. <strong>{mech.derived_info.max_hp}</strong>)</span>
 			<span class="info-value">
-				<CustomNumber min={0} max={mech.info.max_hp} bind:value={mech.info.hp} />
+				<CustomNumber min={0} max={mech.derived_info.max_hp} bind:value={mech.info.hp} />
 			</span>
 		</div>
 		<div class="info-card">
@@ -23,14 +23,16 @@
 		</div>
 		<div class="info-card">
 			<span class="info-label">Speed</span>
-			<span class="info-value">{mech.info.speed}</span>
+			<span class="info-value">{mech.derived_info.speed}</span>
 		</div>
 		<div class="info-card">
-			<span class="info-label">Inv. (max. <strong>{mech.info.inventory_capacity}</strong>)</span>
+			<span class="info-label"
+				>Inv. (max. <strong>{mech.derived_info.inventory_capacity}</strong>)</span
+			>
 			<span class="info-value">
 				<CustomNumber
 					min={0}
-					max={parseInt(mech.info.inventory_capacity.match(/\d+/))}
+					max={parseInt(mech.derived_info.inventory_capacity.match(/\d+/))}
 					bind:value={mech.info.inv}
 				/>
 			</span>

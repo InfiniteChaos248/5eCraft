@@ -1,5 +1,5 @@
 <script>
-	let { mech, selectedMech = $bindable() } = $props();
+	let { selectedMech = $bindable() } = $props();
 	let autoAccOpen = $state(false);
 </script>
 
@@ -11,7 +11,9 @@
 	>
 		<span class="accordion-title">Automation Functions</span>
 		{#if !autoAccOpen}
-			<span class="accordion-names">{mech.automation_functions.map((a) => a.name).join(', ')}</span>
+			<span class="accordion-names"
+				>{selectedMech.automation_functions.map((a) => a.name).join(', ')}</span
+			>
 		{/if}
 		<span class="accordion-indicator">▼</span>
 	</button>
