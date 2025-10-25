@@ -1,7 +1,11 @@
+import { fileURLToPath } from 'node:url';
+import { dirname, join } from 'node:path';
 import Database from 'better-sqlite3';
-import path from 'path';
 
-const db = new Database(path.join(process.cwd(), 'data/sanctum.db'));
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
+
+const db = new Database(join(__dirname, '../../data/sanctum.db'));
 
 export const GET = ({ url }) => {
 	const code = url.searchParams.get('code');
