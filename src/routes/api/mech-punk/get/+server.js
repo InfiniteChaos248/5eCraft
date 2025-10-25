@@ -1,8 +1,24 @@
-import Database from 'better-sqlite3';
+import { fileURLToPath } from 'node:url';
+import { dirname, join } from 'node:path';
 import fs from 'node:fs';
-import { DB_PATH } from '$env/static/private';
+import Database from 'better-sqlite3';
 
-const db = new Database(fs.readFileSync(DB_PATH));
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
+console.log(__filename);
+console.log(__dirname);
+
+// Construct absolute path to DB
+const dbDir = join(__dirname, '../../../data');
+const dbPath = join(dbDir, 'sanctum.db');
+
+// Ensure the directory exists
+if (!fs.existsSync(dbDir)) {
+	fs.mkdirSync(dbDir, { recursive: true });
+}
+
+console.log(dbPath);
+const db = new Database(dbPath);
 
 export const GET = ({ url }) => {
 	const code = url.searchParams.get('code');
