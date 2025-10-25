@@ -1,11 +1,8 @@
-import { fileURLToPath } from 'node:url';
-import { dirname, join } from 'node:path';
 import Database from 'better-sqlite3';
+import fs from 'node:fs';
+import { DB_PATH } from '$env/static/private';
 
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = dirname(__filename);
-
-const db = new Database(join(__dirname, '../../data/sanctum.db'));
+const db = new Database(fs.readFileSync(DB_PATH));
 
 export const GET = ({ url }) => {
 	const code = url.searchParams.get('code');

@@ -1,7 +1,8 @@
 import Database from 'better-sqlite3';
-import path from 'path';
+import fs from 'node:fs';
+import { DB_PATH } from '$env/static/private';
 
-const db = new Database(path.join(process.cwd(), 'data/sanctum.db'));
+const db = new Database(fs.readFileSync(DB_PATH));
 
 export const POST = async ({ request }) => {
 	const body = await request.json();
