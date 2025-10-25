@@ -1,8 +1,4 @@
-import Database from 'better-sqlite3';
-import fs from 'node:fs';
-import { DB_PATH } from '$env/static/private';
-
-const db = new Database(fs.readFileSync(DB_PATH));
+import { getDB } from '$lib/db.server.js';
 
 export const POST = async ({ request }) => {
 	const body = await request.json();
@@ -11,6 +7,8 @@ export const POST = async ({ request }) => {
 	if (!code || !mech_data) {
 		return new Response('missing input: access code or mech data', { status: 400 });
 	}
+
+	const db = getDB();
 
 	const result = db
 		.prepare('UPDATE mechs SET data_blob = ? WHERE access_code = ?')

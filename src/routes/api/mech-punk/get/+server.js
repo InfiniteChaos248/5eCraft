@@ -1,28 +1,10 @@
-import { fileURLToPath } from 'node:url';
-import { dirname, join } from 'node:path';
-import fs from 'node:fs';
-import Database from 'better-sqlite3';
-
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = dirname(__filename);
-console.log(__filename);
-console.log(__dirname);
-
-// Construct absolute path to DB
-const dbDir = join(__dirname, '../../../data');
-const dbPath = join(dbDir, 'sanctum.db');
-
-// Ensure the directory exists
-if (!fs.existsSync(dbDir)) {
-	fs.mkdirSync(dbDir, { recursive: true });
-}
-
-console.log(dbPath);
-const db = new Database(dbPath);
+import { getDB } from '$lib/db.server.js';
 
 export const GET = ({ url }) => {
 	const code = url.searchParams.get('code');
 	if (!code) return new Response('missing input: access code', { status: 400 });
+
+	const db = getDB();
 
 	let row = db
 		.prepare(
