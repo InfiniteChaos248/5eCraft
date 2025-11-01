@@ -87,7 +87,9 @@
 	</div>
 
 	<section class="parts-section">
-		<div class="parts-label">HEAD ({mech.info.max_hp * mechData.integrity.multiplier.head} HP)</div>
+		<div class="parts-label">
+			HEAD ({mech.derived_info.max_hp * mechData.integrity.multiplier.head} HP)
+		</div>
 		<div class="parts-list">
 			{#each Object.values(mech.integrity).filter((x) => x.type === 'head') as part}
 				<IntegrityPart {part} {selected_part} {selectPart} />
@@ -97,7 +99,7 @@
 
 	<section class="parts-section">
 		<div class="parts-label">
-			TORSO ({mech.info.max_hp * mechData.integrity.multiplier.torso} HP)
+			TORSO ({mech.derived_info.max_hp * mechData.integrity.multiplier.torso} HP)
 		</div>
 		<div class="parts-list">
 			{#each Object.values(mech.integrity).filter((x) => x.type === 'torso') as part}
@@ -108,7 +110,7 @@
 
 	<section class="parts-section">
 		<div class="parts-label">
-			LIMBS ({mech.info.max_hp * mechData.integrity.multiplier.limb} HP)
+			LIMBS ({mech.derived_info.max_hp * mechData.integrity.multiplier.limb} HP)
 		</div>
 		<div class="parts-list">
 			{#each Object.values(mech.integrity).filter((x) => x.type === 'limb') as part}
@@ -119,7 +121,7 @@
 
 	<section class="parts-section">
 		<div class="parts-label">
-			JOINTS ({mech.info.max_hp * mechData.integrity.multiplier.joint} HP)
+			JOINTS ({mech.derived_info.max_hp * mechData.integrity.multiplier.joint} HP)
 		</div>
 		<div class="parts-list">
 			{#each Object.values(mech.integrity).filter((x) => x.type === 'joint') as part}
